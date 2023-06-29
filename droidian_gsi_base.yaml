@@ -51,12 +51,20 @@ actions:
     command: apt update
 {{end}}
 
-{{ if ne $architecture "amd64" }}
+{{ if eq $architecture "arm64" }}
   - action: apt
     chroot: true
     description: install android GSI
     packages:
       - android-system-gsi-{{ $apilevel }}:arm64
+{{end}}
+
+{{ if eq $architecture "armhf" }}
+  - action: apt
+    chroot: true
+    description: install android GSI
+    packages:
+      - android-system-gsi-{{ $apilevel }}:armhf
 {{end}}
 
   - action: apt
