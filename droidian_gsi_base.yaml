@@ -39,6 +39,11 @@ actions:
     chroot: true
     script: scripts/setup-system.sh {{ $hostname }}
 
+  - action: run
+    descrption: Clean apt
+    chroot: true
+    command: apt clean
+
 {{ if eq $architecture "armhf" }}
   - action: run
     chroot: true
